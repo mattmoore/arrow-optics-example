@@ -10,6 +10,8 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+
+    kotlin("kapt") version "1.3.61"
 }
 
 repositories {
@@ -17,6 +19,8 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+val arrowVersion = "0.10.4"
 
 dependencies {
     // Align versions of all Kotlin components
@@ -27,8 +31,29 @@ dependencies {
 
     // Kotest
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+
+    // Arrow
+    implementation("io.arrow-kt:arrow-core:$arrowVersion")
+    implementation("io.arrow-kt:arrow-syntax:$arrowVersion")
+    implementation("io.arrow-kt:arrow-fx:$arrowVersion")
+    implementation("io.arrow-kt:arrow-optics:$arrowVersion")
+    implementation("io.arrow-kt:arrow-fx-rx2:$arrowVersion")
+    implementation("io.arrow-kt:arrow-mtl:$arrowVersion")
+    kapt("io.arrow-kt:arrow-meta:$arrowVersion")
+
+    kaptTest("io.arrow-kt:arrow-meta:$arrowVersion")
+
+    // SLF4J
+    implementation("org.slf4j:slf4j-simple:1.7.30")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+    }
+
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions.freeCompilerArgs += "-Xuse-experimental=kotlin.Experimental"
+        kotlinOptions.jvmTarget = "1.8"
+    }
 }
