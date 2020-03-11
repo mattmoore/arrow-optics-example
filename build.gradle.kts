@@ -6,7 +6,7 @@
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.3.41"
+    id("org.jetbrains.kotlin.jvm") version "1.3.61"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
@@ -40,7 +40,6 @@ dependencies {
     implementation("io.arrow-kt:arrow-fx-rx2:$arrowVersion")
     implementation("io.arrow-kt:arrow-mtl:$arrowVersion")
     kapt("io.arrow-kt:arrow-meta:$arrowVersion")
-
     kaptTest("io.arrow-kt:arrow-meta:$arrowVersion")
 
     // SLF4J
