@@ -4,4 +4,4 @@ For an explanation of Arrow's Optics, please see: https://mattmoore.io/blog/arro
 
 Examples:
 
-[https://github.com/mattmoore/arrow-optics-example/tree/master/src/test/kotlin/arrow/optics/example](Optics Spec)
+Optional Spec: https://github.com/mattmoore/arrow-optics-example/blob/master/src/test/kotlin/arrow/optics/example/OptionalSpec.kt
